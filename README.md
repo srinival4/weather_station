@@ -2,6 +2,7 @@
 A weather station built with Raspberry Pi Zero
 
 Part 1: Setting up a Raspberry Pi
+----------------------------------
 
 Watch this video
 
@@ -96,6 +97,7 @@ Connect via VNC by putting in the IP address into the VNC Viewer.
 Set country and language correctly.
 
 Part 2: Building a basic weather station
+-----------------------------------------
 
 The BME280 chip contains sensors for temperature, pressure and humidity.
 
@@ -115,6 +117,17 @@ SCL is a serial clock pin for I2C interface.
 SDA is a serial data pin for I2C interface.
 
 Solder the pins to the chip.
+
+
+![](https://lh4.googleusercontent.com/d6uSAFebrZWi4tqsfZEkqgMHPwpxb4Py1P5TDGTZ_smDVUJpaH3ZSovsdYIlrFpv6O71ey0z29HguniM5cnZZQAJNr_NWNkw1fGvIIOOh5_uHf9DEl_7sOHGef9hkE47plLMtgRD6k8spv6OcQ)
+
+Raspberry Pi Zero GPIO Pin Layout.
+
+![](https://lh6.googleusercontent.com/7W2CdS1i3TBqS4jC1nY1rJlE9Ed8WBpr6_lmek0WRyf6Ib-95WYXHrfXwqeKZXANqiHmsSM3SmytX60w3waag9oW4hX7sj5n7-DiQvSgsP6IQh64Suusb25uBCyw48UFZ-O6-g2TfpP4B5z-uw)
+
+Connect the BME280 chip to the Raspberry pi, as shown below.
+
+![](https://lh5.googleusercontent.com/Ns4gzDhxT0IXfu1ne9YBB0cY71dtYuuRAlAu7VUND6sBm8A2y2faAkoVVv_VbpqkV4cg4APsLiX6Qiy8u8dxh8ksb5BMPfuGssu4cPBNFpIGq5nMSmVgFFKXH0E3iK5-WBC2ZgE3FdFFzt5Cow)
 
 
 
