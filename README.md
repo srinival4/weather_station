@@ -159,4 +159,121 @@ Transfer the csv file to laptop.
  scp pi@raspberrypi:/home/pi/Documents/readings.csv .
 
  <put the changed password for pi> to allow the transfer
+ 
+ Part 5: Display current weather reading on demand
+ -------------------------------------------------
+
+Read article at  <https://techexpert.tips/nginx/python-cgi-nginx/>  to learn how to install nginx.
+
+Update packages
+
+Make sure pi is up to date.
+
+sudo apt-get update
+
+sudo apt-get upgrade
+
+ Install nginx and configure
+
+Install the Nginx server and the Fcgiwrap package.
+
+sudo apt-get install nginx fcgiwrap
+
+Create a configuration file for the CGI gateway.
+
+cp /usr/share/doc/fcgiwrap/examples/nginx.conf /etc/nginx/fcgiwrap.conf
+
+Create a directory to store the CGI files.
+
+mkdir /usr/lib/cgi-bin -p
+
+Edit the Nginx configuration file for the default website.
+
+vi /etc/nginx/sites-available/default
+
+Insert the following line in the area named SERVER.
+
+include fcgiwrap.conf;
+
+server {
+
+     listen 80 default_server;
+
+     listen [::]:80 default_server;
+
+     root /var/www/html;
+
+     index index.html index.htm index.nginx-debian.html;
+
+     server_name _;
+
+     location / {
+
+             try_files $uri $uri/ =404;
+
+     }
+
+include fcgiwrap.conf;
+
+}
+
+Restart the nginx service.
+
+service nginx restart
+
+As an example, let's create a Python CGI script.
+
+Access the Nginx's CGI directory.
+
+cd /usr/lib/cgi-bin
+
+Create a test page using Python.
+
+vi /usr/lib/cgi-bin/test.py
+
+#!/usr/bin/python3
+
+print('Content-Type: text/plain')
+
+print('')
+
+print('This is my test!')
+
+Change the file permission to make it executable.
+
+chmod 755 /usr/lib/cgi-bin/test.py
+
+Open your browser and enter the IP address of your web server plus /cgi-bin/test.py.
+
+For example, 10.2.2.5/cgi-bin/test.py.
+
+If this works, next output weather data to a web page!
+
+If it doesn't work, look at the errorlog with
+
+ tail /var/log/nginx/error.log
+
+To output weather data, 
+
+1.  write a program (get_single_weather_reading.py) to get a single weather reading from the BME280. . 
+
+Format the output and write the data to a text file with mode "w", so it will be overwritten the next time that the program runs. 
+
+Make this file an executable by running chmod 755 <filename> so it can be run as a cron job later.
+
+1.  Write a program (output_weather_data.py) for reading the data from the text file and displaying it on the web page. . Make sure that this program is stored in /usr/lib/cgi-bin and has executable permissions. 
+
+See steps above with the test file.
+
+1.  Open your browser and enter the IP address of your web server plus /cgi-bin/test.py.
+
+For example, 10.2.2.5/cgi-bin/output_weather_data.py.
+
+1.  Run a cron job every 10 minutes to update the weather data.
+
+sudo crontab -e 
+
+Add the following line and save the file.
+
+*/10 * * * * /path/to/python script
 
