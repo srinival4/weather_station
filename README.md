@@ -95,5 +95,26 @@ Connect via VNC by putting in the IP address into the VNC Viewer.
 
 Set country and language correctly.
 
+Part 2: Building a basic weather station
+
+The BME280 chip contains sensors for temperature, pressure and humidity.
+
+BME280 Sensor Pinout
+--------------------
+
+The BME280 module has only 4 pins that interface it to the outside world. The connections are as follows:
+
+![BME280 Pinout - Temperature Humidity Barometric Pressure Sensor](https://lh6.googleusercontent.com/ieKZVHcG8nV-xfcOcd4dITbolZyQ6WQzwZh1Bq0zCDHiB0xCE60rpdT9n4A3WQlkDCCPufKT83z-K4h6bCD4xARpzsik7VzlL8SNj6nZWGAdEHaJ1K9N9n7abP0ff74YxVuxAd2IhVAq5aTNBg)
+
+VIN is the power supply for the module which can be anywhere between 3.3V to 5V.
+
+GND should be connected to the ground of the Raspberry Pi
+
+SCL is a serial clock pin for I2C interface.
+
+SDA is a serial data pin for I2C interface.
+
+Solder the pins to the chip.
+
 
 
