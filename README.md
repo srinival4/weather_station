@@ -130,4 +130,33 @@ Connect the BME280 chip to the Raspberry pi, as shown below.
 ![](https://lh5.googleusercontent.com/Ns4gzDhxT0IXfu1ne9YBB0cY71dtYuuRAlAu7VUND6sBm8A2y2faAkoVVv_VbpqkV4cg4APsLiX6Qiy8u8dxh8ksb5BMPfuGssu4cPBNFpIGq5nMSmVgFFKXH0E3iK5-WBC2ZgE3FdFFzt5Cow)
 
 
+Part 3: Enable I2CBus
+----------------------
+
+Enable the I2C interface on the Raspberry Pi.
+
+The I2C Bus allows multiple devices to be connected to the Raspberry Pi, each with a unique address. It is very useful to see which devices are connected to the Pi using i2cdetect.
+
+Run i2cdetect to ensure that  the BME280 chip can be detected, and note down the bus address to be scanned. This bus address will be used in the python program to talk to the BME280 chip.
+
+ sudo i2cdetect -y 1
+
+Install the right python packages to talk to the BME280 chip
+
+sudo pip install RPi.bme280 smbus
+
+Part 4: Collecting weather readings programmatically
+-----------------------------------------------------
+
+Download and edit (to change file paths)  the python program (weatherstation.py) to read the temperature, pressure and humidity values from the chip, and write the values to a csv file. Add a loop to the program, so that weather readings are taken at intervals of 30 minutes.Program is set to collect data 10 times at half hour intervals. Store the collected weather results in a local csv file on the Raspberry Pi.
+
+Run the python program as a background process. 
+
+python weatherstation.py &
+
+Transfer the csv file to laptop.
+
+ scp pi@raspberrypi:/home/pi/Documents/readings.csv .
+
+ <put the changed password for pi> to allow the transfer
 
