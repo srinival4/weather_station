@@ -67,22 +67,33 @@ apt-get upgrade
 
 exit
 
-
 Change the password on Raspberry Pi, to increase security.
+
 Run raspi-config
+
 Go to system options, change password.
+
 sudo reboot
+
 Connect remotely to pi.
+
 ssh pi@raspberrypi
 
-
 Connect over VNC to use remote desktop.
+
 ifconfig raspberrypi to get IP address. Note it down.
+
 raspi-config
+
 Interface options
+
 Enable VNC server.
+
 Download VNC software from Real VNC
+
 Connect via VNC by putting in the IP address into the VNC Viewer.
+
 Set country and language correctly.
+
 
 
